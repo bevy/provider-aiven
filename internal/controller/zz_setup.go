@@ -9,7 +9,7 @@ import (
 
 	"github.com/upbound/upjet/pkg/controller"
 
-	resource "github.com/codergolem/provider-aiven/internal/controller/null/resource"
+	database "github.com/codergolem/provider-aiven/internal/controller/mysql-database/database"
 	providerconfig "github.com/codergolem/provider-aiven/internal/controller/providerconfig"
 )
 
@@ -17,7 +17,7 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
-		resource.Setup,
+		database.Setup,
 		providerconfig.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {

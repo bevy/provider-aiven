@@ -11,6 +11,7 @@ import (
 	ujconfig "github.com/upbound/upjet/pkg/config"
 
 	"github.com/codergolem/provider-aiven/config/null"
+	"github.com/codergolem/provider-aiven/config/mysql_database"
 )
 
 const (
@@ -35,6 +36,7 @@ func GetProvider() *ujconfig.Provider {
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
 		null.Configure,
+		mysql_database.Configure,
 	} {
 		configure(pc)
 	}
